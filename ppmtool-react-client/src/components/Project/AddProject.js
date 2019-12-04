@@ -11,11 +11,18 @@ class AddProject extends Component {
       projectIdentifier: "",
       description: "",
       start_date: "",
-      end_date: ""
+      end_date: "",
+      errors: {}
     };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
   }
 
   onChange(e) {
@@ -32,11 +39,11 @@ class AddProject extends Component {
       end_date: this.state.end_date
     };
     this.props.createProject(newProject, this.props.history);
-
-    console.log(newProject);
   }
 
   render() {
+    const { errors } = this.state;
+
     return (
       <div>
         <div className="project">
@@ -55,6 +62,7 @@ class AddProject extends Component {
                       value={this.state.projectName}
                       onChange={this.onChange}
                     />
+                    <p>{errors.projectName}</p>
                   </div>
                   <div className="form-group">
                     <input
@@ -65,6 +73,7 @@ class AddProject extends Component {
                       value={this.state.projectIdentifier}
                       onChange={this.onChange}
                     />
+                    <p>{errors.projectIdentifier}</p>
                   </div>
                   <div className="form-group">
                     <input
@@ -75,6 +84,7 @@ class AddProject extends Component {
                       value={this.state.description}
                       onChange={this.onChange}
                     />
+                    <p>{errors.description}</p>
                   </div>
                   <h6>Start Date</h6>
                   <div className="form-group">
@@ -85,8 +95,8 @@ class AddProject extends Component {
                       value={this.state.start_date}
                       onChange={this.onChange}
                     />
+                    <p>{errors.start_date}</p>
                   </div>
-                  <h6>end_date Date</h6>
                   <div className="form-group">
                     <input
                       type="date"
@@ -111,7 +121,12 @@ class AddProject extends Component {
 }
 
 AddProject.propTypes = {
-  createProject: PropType.func.isRequired
+  createProject: PropType.func.isRequired,
+  errors: PropType.object.isRequired
 };
 
-export default connect(null, { createProject })(AddProject);
+const mapStateToProps = state => ({
+  errors: state.errors
+});
+
+export default connect(mapStateToProps, { createProject })(AddProject);
