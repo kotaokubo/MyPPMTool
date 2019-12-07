@@ -1,17 +1,22 @@
 package io.kotaokubo.ppmtool.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 
 @Entity
 public class Backlog {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer PTsequence = 0;
+    private Integer PTSequence = 0;
     private String projectIdentifier;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="project_id",nullable = false)
+    @JsonIgnore
+    private Project project;
 
     public Backlog(){
 
@@ -25,12 +30,12 @@ public class Backlog {
         this.id = id;
     }
 
-    public Integer getPTsequence() {
-        return PTsequence;
+    public Integer getPTSequence() {
+        return PTSequence;
     }
 
-    public void setPTsequence(Integer PTsequence) {
-        this.PTsequence = PTsequence;
+    public void setPTSequence(Integer PTSequence) {
+        this.PTSequence = PTSequence;
     }
 
     public String getProjectIdentifier() {
@@ -39,5 +44,13 @@ public class Backlog {
 
     public void setProjectIdentifier(String projectIdentifier) {
         this.projectIdentifier = projectIdentifier;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 }
