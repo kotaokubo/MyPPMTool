@@ -9,6 +9,7 @@ import java.util.Date;
 
 @Entity
 public class ProjectTask {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,14 +20,15 @@ public class ProjectTask {
     private String acceptanceCriteria;
     private String status;
     private Integer priority;
-    @Column(updatable = false)
-    private String projectIdentifier;
-
+    private Date dueDate;
+    //ManyToOne with Backlog
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
     @JoinColumn(name="backlog_id", updatable = false, nullable = false)
     @JsonIgnore
     private Backlog backlog;
-    private Date dueDate;
+
+    @Column(updatable = false)
+    private String projectIdentifier;
     private Date create_At;
     private Date update_At;
 
@@ -81,20 +83,20 @@ public class ProjectTask {
         this.priority = priority;
     }
 
-    public String getProjectIdentifier() {
-        return projectIdentifier;
-    }
-
-    public void setProjectIdentifier(String projectIdentifier) {
-        this.projectIdentifier = projectIdentifier;
-    }
-
     public Date getDueDate() {
         return dueDate;
     }
 
     public void setDueDate(Date dueDate) {
         this.dueDate = dueDate;
+    }
+
+    public String getProjectIdentifier() {
+        return projectIdentifier;
+    }
+
+    public void setProjectIdentifier(String projectIdentifier) {
+        this.projectIdentifier = projectIdentifier;
     }
 
     public Date getCreate_At() {
@@ -122,12 +124,12 @@ public class ProjectTask {
     }
 
     @PrePersist
-    protected void onCreate() {
+    protected void onCreate(){
         this.create_At = new Date();
     }
 
     @PreUpdate
-    protected void onUpdate() {
+    protected void onUpdate(){
         this.update_At = new Date();
     }
 
@@ -140,8 +142,8 @@ public class ProjectTask {
                 ", acceptanceCriteria='" + acceptanceCriteria + '\'' +
                 ", status='" + status + '\'' +
                 ", priority=" + priority +
-                ", projectIdentifier='" + projectIdentifier + '\'' +
                 ", dueDate=" + dueDate +
+                ", projectIdentifier='" + projectIdentifier + '\'' +
                 ", create_At=" + create_At +
                 ", update_At=" + update_At +
                 '}';
