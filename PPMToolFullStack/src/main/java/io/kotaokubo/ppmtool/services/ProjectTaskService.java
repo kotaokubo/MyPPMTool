@@ -61,13 +61,31 @@ public class ProjectTaskService {
     public Iterable<ProjectTask> findBacklogById(String id) {
         Project project = projectRepository.findByProjectIdentifier(id);
 
-        if(project==null) {
+        if(project == null) {
             throw new ProjectNotFoundException("Project with ID: '"+id+"' does not exist");
         }
         return projectTaskRepository.findByProjectIdentifierOrderByPriority(id);
     }
 
     public ProjectTask findPTByProjectSequence(String backlog_id, String pt_id) {
-        return projectTaskRepository.findByProjectSequence(pt_id);
+
+        // 既存のバックログで検索しているかどうかの判定
+        Backlog backlog = backlogRepository.findByProjectIdentifier(backlog_id);
+        if (backlog == null) {
+            throw new ProjectNotFoundException("Project Task with ID: '"+backlog_id+"' does not exist");
+        }
+
+        // タスクの存在判定
+        ProjectTask projectTask = projectTaskRepository.findByProjectSequence(pt_id);
+        if (projectTask == null) {
+            throw new ProjectNotFoundException("Project Task: '"+pt_id+"'not found");
+        }
+
+        // パスが正しいプロジェクトに対応していることを確認
+        if (!projectTask.getProjectIdentifier().equals(backlog_id)) {
+            throw new ProjectNotFoundException("Project Task: '"+pt_id+"'does not exist in project: '" +backlog_id);
+        }
+        
+        return projectTask;
     }
 }
