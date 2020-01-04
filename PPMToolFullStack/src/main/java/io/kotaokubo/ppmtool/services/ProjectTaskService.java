@@ -104,7 +104,6 @@ public class ProjectTaskService {
         ProjectTask projectTask = findPTByProjectSequence(backlog_id, pt_id);
 
         projectTask = updatedTask;
-
         return projectTaskRepository.save(projectTask);
     }
 
