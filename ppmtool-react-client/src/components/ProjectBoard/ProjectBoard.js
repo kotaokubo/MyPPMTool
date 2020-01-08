@@ -26,7 +26,7 @@ class ProjectBoard extends Component {
   // }
   render() {
     const { id } = this.props.match.params;
-    const { project_tasks } = this.props.backlog;
+    // const { project_tasks } = this.props.backlog;
     // const { errors } = this.state;
 
     // let BoardContent;
@@ -62,7 +62,7 @@ class ProjectBoard extends Component {
         </Link>
         <br />
         <hr />
-        <Backlog project_tasks_prop={project_tasks} />
+        <Backlog />
       </div>
     );
   }
@@ -75,7 +75,7 @@ ProjectBoard.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  backlog: state.backlog,
+  backlog: state.Backlog,
   errors: state.errors
 });
 
