@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Backlog from "./Backlog";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { getBacklog } from "../../actions/backlogActions";
 
 class ProjectBoard extends Component {
   // constructor() {
@@ -31,27 +28,27 @@ class ProjectBoard extends Component {
 
     // let BoardContent;
 
-    const boardAlgorithm = (errors, project_tasks) => {
-      if (project_tasks.length < 1) {
-        return (
-          <div className="alert alert-danger text-center" role="alert">
-            {errors.projectNotFound}
-          </div>
-        );
-      } else if (errors.projectIdentifier) {
-        return (
-          <div className="alert alert-danger text-center" role="alert">
-            {errors.projectIdentifier}
-          </div>
-        );
-      } else {
-        return (
-          <div className="alert alert-info text-center" role="alert">
-            No Project Tasks on this board
-          </div>
-        );
-      }
-    };
+    // const boardAlgorithm = (errors, project_tasks) => {
+    //   if (project_tasks.length < 1) {
+    //     return (
+    //       <div className="alert alert-danger text-center" role="alert">
+    //         {errors.projectNotFound}
+    //       </div>
+    //     );
+    //   } else if (errors.projectIdentifier) {
+    //     return (
+    //       <div className="alert alert-danger text-center" role="alert">
+    //         {errors.projectIdentifier}
+    //       </div>
+    //     );
+    //   } else {
+    //     return (
+    //       <div className="alert alert-info text-center" role="alert">
+    //         No Project Tasks on this board
+    //       </div>
+    //     );
+    //   }
+    // };
 
     // BoardContent = boardAlgorithm(errors, project_tasks);
 
@@ -62,21 +59,23 @@ class ProjectBoard extends Component {
         </Link>
         <br />
         <hr />
-        {/* {BoardContent} */}
+        <Backlog />
       </div>
     );
   }
 }
 
-ProjectBoard.propTypes = {
-  backlog: PropTypes.object.isRequired,
-  getBacklog: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired
-};
+export default ProjectBoard;
 
-const mapStateToProps = state => ({
-  backlog: state.Backlog,
-  errors: state.errors
-});
+// ProjectBoard.propTypes = {
+//   backlog: PropTypes.object.isRequired,
+//   getBacklog: PropTypes.func.isRequired,
+//   errors: PropTypes.object.isRequired
+// };
 
-export default connect(mapStateToProps, { getBacklog })(ProjectBoard);
+// const mapStateToProps = state => ({
+//   backlog: state.Backlog,
+//   errors: state.errors
+// });
+
+// export default connect(mapStateToProps, { getBacklog })(ProjectBoard);
