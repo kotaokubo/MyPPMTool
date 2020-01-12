@@ -45,6 +45,7 @@ public class ProjectTaskService {
             projectTask.setProjectSequence(projectIdentifier + "-" + BacklogSequence);
             projectTask.setProjectIdentifier(projectIdentifier);
 
+            //Fix bug with priority in Spring Boot Server, needs to check null first
             //INITIAL priority when priority null
         if(projectTask.getPriority()==0||projectTask.getPriority()==null){
             projectTask.setPriority(3);
