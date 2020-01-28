@@ -4,6 +4,7 @@ import io.kotaokubo.ppmtool.domain.Backlog;
 import io.kotaokubo.ppmtool.domain.Project;
 import io.kotaokubo.ppmtool.domain.User;
 import io.kotaokubo.ppmtool.exceptions.ProjectIdException;
+import io.kotaokubo.ppmtool.exceptions.ProjectNotFoundException;
 import io.kotaokubo.ppmtool.repositories.BacklogRepository;
 import io.kotaokubo.ppmtool.repositories.ProjectRepository;
 import io.kotaokubo.ppmtool.repositories.UserRepository;
@@ -47,29 +48,28 @@ public class ProjectService {
 
     }
 
-    public Project findProjectByIdentifier(String projectId) {
+    public Project findProjectByIdentifier(String projectId, String username) {
 
         Project project = projectRepository.findByProjectIdentifier(projectId.toUpperCase());
 
         if (project == null) {
             throw new ProjectIdException("Project ID '" + projectId + "' does no");
         }
+        if (!project.getProjectLeader().equals(username)){
+            throw new ProjectNotFoundException("Project not found in your account");
+        }
 
         return project;
     }
 
-    public Iterable<Project> findAllProjects() {
-        return projectRepository.findAll();
+    public Iterable<Project> findAllProjects(String username) {
+        return projectRepository.findAllByProjectLeader(username);
     }
 
 
-    public void deleteProjectByIdentifier(String projectId) {
-        Project project = projectRepository.findByProjectIdentifier(projectId.toUpperCase());
+    public void deleteProjectByIdentifier(String projectId, String username) {
 
-        if (project == null) {
-            throw new ProjectIdException("Cannot Project with ID '" + projectId + "'. This project does not exist");
-        }
+        projectRepository.delete(findProjectByIdentifier(projectId, username));
 
-        projectRepository.delete(project);
     }
 }
