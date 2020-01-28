@@ -29,8 +29,8 @@ public class JWTLoginSuccessResponse {
     @Override
     public String toString() {
         return "JWTLoginSuccessResponse{" +
-            "success=" + success +
-            ", token='" + token + '\'' +
-        '}';
+                "success=" + success +
+                ", token='" + token + '\'' +
+                '}';
     }
 }
