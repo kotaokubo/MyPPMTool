@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classnames from "classnames";
 import { login } from "../../actions/securityActions";
+import { id } from "postcss-selector-parser";
 
 class Login extends Component {
   constructor() {
@@ -15,6 +16,11 @@ class Login extends Component {
     this.onChange = this.onChange.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.security.validToken) {
+      this.props.history.push("/dashboard");
+    }
+  }
   onSubmit(e) {
     e.preventDefault();
     const LoginRequest = {
