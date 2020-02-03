@@ -27,9 +27,9 @@ export const login = LoginRequest => async dispatch => {
     const { token } = res.data;
     // store the token in the localStorage
     localStorage.setItem("jwtToken", token);
-    // set our token in header
+    // set our token in header ***
     setJWTToken(token);
-    // decode token on import React from 'react'
+    // decode token on React
     const decoded = jwt_decode(token);
     // dispatch to our securityReducer
     dispatch({
@@ -38,8 +38,17 @@ export const login = LoginRequest => async dispatch => {
     });
   } catch (err) {
     dispatch({
-      type: SET_CURRENT_USER,
+      type: GET_ERRORS,
       payload: err.response.data
     });
   }
+};
+
+export const logout = () => dispatch => {
+  localStorage.removeItem("jwtToken");
+  setJWTToken(false);
+  dispatch({
+    type: SET_CURRENT_USER,
+    payload: {}
+  });
 };
