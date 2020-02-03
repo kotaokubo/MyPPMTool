@@ -15,6 +15,11 @@ class Login extends Component {
     this.onChange = this.onChange.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.security.validToken) {
+      this.props.history.push("/dashboard");
+    }
+  }
   onSubmit(e) {
     e.preventDefault();
     const LoginRequest = {
