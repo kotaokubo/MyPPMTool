@@ -149,9 +149,9 @@ class UpdateProjectTask extends Component {
                     onChange={this.onChange}
                   >
                     <option value={0}>優先度</option>
-                    <option value={1}>High</option>
-                    <option value={2}>Medium</option>
-                    <option value={3}>Low</option>
+                    <option value={1}>高</option>
+                    <option value={2}>中</option>
+                    <option value={3}>低</option>
                   </select>
                 </div>
 
@@ -163,9 +163,9 @@ class UpdateProjectTask extends Component {
                     onChange={this.onChange}
                   >
                     <option value="">ステータス</option>
-                    <option value="TO_DO">TO DO</option>
-                    <option value="IN_PROGRESS">IN PROGRESS</option>
-                    <option value="DONE">DONE</option>
+                    <option value="TO_DO">未着手</option>
+                    <option value="IN_PROGRESS">進行中</option>
+                    <option value="DONE">完了</option>
                   </select>
                 </div>
 

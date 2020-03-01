@@ -34,44 +34,49 @@ class ProjectTask extends Component {
 
     return (
       <Card style={{ marginBottom: "1px" }}>
-        <CardContent>
-          <Typography className="card-title" component="h5" variant="h5">
-            <Bookmark className={`${priorityClass}`} />
-            {project_task.summary}
-          </Typography>
-          <Typography
-            className="card-text text-truncate"
-            component="p"
-            variant="p"
-          >
-            {project_task.acceptanceCriteria}
-          </Typography>
-          <Typography
-            className="card-text text-truncate"
-            component="p"
-            variant="p"
-          >
-            〆{project_task.dueDate}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Link
-            to={`/updateProjectTask/${project_task.projectIdentifier}/${project_task.projectSequence}`}
-            style={{ color: "inherit", textDecoration: "inherit" }}
-          >
-            <Button style={{ color: "#007bff" }}>View / Update</Button>
-          </Link>
-          <Button
-            style={{ color: "#f50057" }}
-            onClick={this.onDeleteClick.bind(
-              this,
-              project_task.projectIdentifier,
-              project_task.projectSequence
-            )}
-          >
-            Delete
-          </Button>
-        </CardActions>
+        <Link
+          to={`/updateProjectTask/${project_task.projectIdentifier}/${project_task.projectSequence}`}
+          style={{ color: "inherit", textDecoration: "inherit" }}
+        >
+          <CardContent>
+            <Typography className="card-title" component="h5" variant="h5">
+              <Bookmark className={`${priorityClass}`} />
+              {project_task.summary}
+            </Typography>
+            <Typography
+              className="card-text text-truncate"
+              component="p"
+              variant="p"
+            >
+              {project_task.acceptanceCriteria}
+            </Typography>
+            <Typography
+              className="card-text text-truncate"
+              component="p"
+              variant="p"
+            >
+              〆{project_task.dueDate}
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Link
+              to={`/updateProjectTask/${project_task.projectIdentifier}/${project_task.projectSequence}`}
+              style={{ color: "inherit", textDecoration: "inherit" }}
+            >
+              <Button style={{ color: "#007bff" }}>View / Update</Button>
+            </Link>
+            <Button
+              style={{ color: "#f50057" }}
+              onClick={this.onDeleteClick.bind(
+                this,
+                project_task.projectIdentifier,
+                project_task.projectSequence
+              )}
+            >
+              Delete
+            </Button>
+          </CardActions>
+        </Link>
       </Card>
     );
   }

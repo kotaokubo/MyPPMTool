@@ -17,9 +17,7 @@ class Landing extends Component {
             <div className="row">
               <div className="col-md-12 text-center">
                 <h1 className="display-3">タスマネver1</h1>
-                <p className="lead">
-                  アカウントを作成して "やり忘れ" をなくそう！
-                </p>
+                <p className="lead">タスク管理して "やり忘れ" をなくそう！</p>
                 <hr />
                 <Link className="btn btn-lg btn-primary mr-2" to="/register">
                   新規登録
