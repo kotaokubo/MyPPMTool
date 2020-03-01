@@ -1,5 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Bookmark from "@material-ui/icons/Bookmark";
 import { deleteProjectTask } from "../../../actions/backlogActions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -11,43 +18,51 @@ class ProjectTask extends Component {
 
   render() {
     const { project_task } = this.props;
-    let priorityString;
     let priorityClass;
 
     if (project_task.priority === 1) {
-      priorityClass = "bg-danger text-light";
-      priorityString = "HIGH";
+      priorityClass = "text-danger";
     }
 
     if (project_task.priority === 2) {
-      priorityClass = "bg-warning text-light";
-      priorityString = "MEDIUM";
+      priorityClass = "text-warning";
     }
 
     if (project_task.priority === 3) {
-      priorityClass = "bg-info text-light";
-      priorityString = "LOW";
+      priorityClass = "text-primary";
     }
 
     return (
-      <div className="card mb-1 bg-light">
-        <div className={`card-header text-primary ${priorityClass}`}>
-          dueDate: {project_task.dueDate} -- Priority: {priorityString}
-        </div>
-        <div className="card-body bg-light">
-          <h5 className="card-title">{project_task.summary}</h5>
-          <p className="card-text text-truncate">
+      <Card style={{ marginBottom: "1px" }}>
+        <CardContent>
+          <Typography className="card-title" component="h5" variant="h5">
+            <Bookmark className={`${priorityClass}`} />
+            {project_task.summary}
+          </Typography>
+          <Typography
+            className="card-text text-truncate"
+            component="p"
+            variant="p"
+          >
             {project_task.acceptanceCriteria}
-          </p>
+          </Typography>
+          <Typography
+            className="card-text text-truncate"
+            component="p"
+            variant="p"
+          >
+            〆{project_task.dueDate}
+          </Typography>
+        </CardContent>
+        <CardActions>
           <Link
             to={`/updateProjectTask/${project_task.projectIdentifier}/${project_task.projectSequence}`}
-            className="btn btn-primary"
+            style={{ color: "inherit", textDecoration: "inherit" }}
           >
-            View / Update
+            <Button style={{ color: "#007bff" }}>View / Update</Button>
           </Link>
-
-          <button
-            className="btn btn-danger ml-4"
+          <Button
+            style={{ color: "#f50057" }}
             onClick={this.onDeleteClick.bind(
               this,
               project_task.projectIdentifier,
@@ -55,9 +70,9 @@ class ProjectTask extends Component {
             )}
           >
             Delete
-          </button>
-        </div>
-      </div>
+          </Button>
+        </CardActions>
+      </Card>
     );
   }
 }

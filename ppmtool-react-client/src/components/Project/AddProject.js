@@ -51,7 +51,10 @@ class AddProject extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-8 m-auto">
-                <h5 className="display4 text-center">Create Project Form</h5>
+                <h2 className="display4 text-center">親タスクを作成しよう</h2>
+                <p className="lead text-center">
+                  例：「ブログを作成する」「雑務」
+                </p>
                 <hr />
                 <form onSubmit={this.onSubmit}>
                   <div className="form-group">
@@ -60,7 +63,7 @@ class AddProject extends Component {
                       className={classnames("form-control form-control-lg", {
                         "is-invalid": errors.projectName
                       })}
-                      placeholder="Project Name"
+                      placeholder="親タスク名"
                       name="projectName"
                       value={this.state.projectName}
                       onChange={this.onChange}
@@ -77,7 +80,7 @@ class AddProject extends Component {
                       className={classnames("form-control form-control-lg", {
                         "is-invalid": errors.projectIdentifier
                       })}
-                      placeholder="Unique Project ID"
+                      placeholder="タスクID ※5文字"
                       name="projectIdentifier"
                       value={this.state.projectIdentifier}
                       onChange={this.onChange}
@@ -94,7 +97,7 @@ class AddProject extends Component {
                       className={classnames("form-control form-control-lg", {
                         "is-invalid": errors.description
                       })}
-                      placeholder="Project Description"
+                      placeholder="親タスクの説明"
                       name="description"
                       value={this.state.description}
                       onChange={this.onChange}
@@ -105,7 +108,7 @@ class AddProject extends Component {
                       </div>
                     )}
                   </div>
-                  <h6>Start Date</h6>
+                  <h6>タスクの期間</h6>
                   <div className="form-group">
                     <input
                       type="date"
