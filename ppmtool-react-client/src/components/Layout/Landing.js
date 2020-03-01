@@ -16,16 +16,16 @@ class Landing extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">
-                <h1 className="display-3">Personal Project Management Tool</h1>
+                <h1 className="display-3">タスマネver1</h1>
                 <p className="lead">
-                  Create your account to join active projects or start your own
+                  アカウントを作成して "やり忘れ" をなくそう！
                 </p>
                 <hr />
                 <Link className="btn btn-lg btn-primary mr-2" to="/register">
-                  Sign Up
+                  新規登録
                 </Link>
                 <Link className="btn btn-lg btn-secondary mr-2" to="/login">
-                  Login
+                  ログイン
                 </Link>
               </div>
             </div>

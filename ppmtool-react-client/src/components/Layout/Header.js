@@ -14,14 +14,6 @@ class Header extends Component {
 
     const userIsAuthenticated = (
       <div className="collapse navbar-collapse" id="mobile-nav">
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <Link className="nav-link" to="/dashboard">
-              Dashboard
-            </Link>
-          </li>
-        </ul>
-
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
             <Link className="nav-link" to="/dashboard">
@@ -47,12 +39,12 @@ class Header extends Component {
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
             <Link className="nav-link" to="/register">
-              Sign Up
+              新規登録
             </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/login">
-              Login
+              ログイン
             </Link>
           </li>
         </ul>
@@ -71,16 +63,8 @@ class Header extends Component {
       <nav className="navbar navbar-expand-sm navbar-dark bg-primary mb-4">
         <div className="container">
           <Link className="navbar-brand" to="/">
-            Personal Project Management Tool
+            タスマネ
           </Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#mobile-nav"
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
           {headerLinks}
         </div>
       </nav>

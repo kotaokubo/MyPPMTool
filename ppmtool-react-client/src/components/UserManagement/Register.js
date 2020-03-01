@@ -50,8 +50,8 @@ class Register extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Sign Up</h1>
-              <p className="lead text-center">Create your Account</p>
+              <h1 className="display-4 text-center">Sign In</h1>
+              <p className="lead text-center">アカウントを登録してみよう！</p>
               <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                   <input
@@ -59,7 +59,7 @@ class Register extends Component {
                     className={classnames("form-control form-control-lg", {
                       "is-invalid": errors.fullName
                     })}
-                    placeholder="Full Name"
+                    placeholder="ユーザーネーム"
                     name="fullName"
                     value={this.state.fullName}
                     onChange={this.onChange}
@@ -74,7 +74,7 @@ class Register extends Component {
                     className={classnames("form-control form-control-lg", {
                       "is-invalid": errors.username
                     })}
-                    placeholder="Email Address (Username)"
+                    placeholder="メールアドレス"
                     name="username"
                     value={this.state.username}
                     onChange={this.onChange}
@@ -89,7 +89,7 @@ class Register extends Component {
                     className={classnames("form-control form-control-lg", {
                       "is-invalid": errors.password
                     })}
-                    placeholder="Password"
+                    placeholder="パスワード"
                     name="password"
                     value={this.state.password}
                     onChange={this.onChange}
@@ -104,7 +104,7 @@ class Register extends Component {
                     className={classnames("form-control form-control-lg", {
                       "is-invalid": errors.confirmPassword
                     })}
-                    placeholder="Confirm Password"
+                    placeholder="パスワード確認"
                     name="confirmPassword"
                     value={this.state.confirmPassword}
                     onChange={this.onChange}

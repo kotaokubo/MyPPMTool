@@ -61,10 +61,10 @@ class AddProjectTask extends Component {
           <div className="row">
             <div className="col-md-8 m-auto">
               <Link to={`/projectBoard/${id}`} className="btn btn-light">
-                Back to Project Board
+                子タスク一覧に戻る
               </Link>
               <h4 className="display-4 text-center">Add Project Task</h4>
-              <p className="lead text-center">Project Name + Project Code</p>
+              <p className="lead text-center">子タスクを作成しよう！</p>
               <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                   <input
@@ -73,7 +73,7 @@ class AddProjectTask extends Component {
                       "is-invalid": errors.summary
                     })}
                     name="summary"
-                    placeholder="Project Task summary"
+                    placeholder="子タスクのタイトル"
                     value={this.state.summary}
                     onChange={this.onChange}
                   />
@@ -84,13 +84,13 @@ class AddProjectTask extends Component {
                 <div className="form-group">
                   <textarea
                     className="form-control form-control-lg"
-                    placeholder="Acceptance Criteria"
+                    placeholder="子タスクの説明"
                     name="acceptanceCriteria"
                     value={this.state.acceptanceCriteria}
                     onChange={this.onChange}
                   />
                 </div>
-                <h6>Due Date</h6>
+                <h6>期限</h6>
                 <div className="form-group">
                   <input
                     type="date"
@@ -107,7 +107,7 @@ class AddProjectTask extends Component {
                     value={this.state.priority}
                     onChange={this.onChange}
                   >
-                    <option value={0}>Select Priority</option>
+                    <option value={0}>優先度</option>
                     <option value={1}>High</option>
                     <option value={2}>Medium</option>
                     <option value={3}>Low</option>
@@ -121,7 +121,7 @@ class AddProjectTask extends Component {
                     value={this.state.status}
                     onChange={this.onChange}
                   >
-                    <option value="">Select Status</option>
+                    <option value="">ステータス</option>
                     <option value="TO_DO">TO DO</option>
                     <option value="IN_PROGRESS">IN PROGRESS</option>
                     <option value="DONE">DONE</option>
