@@ -12,6 +12,7 @@ class UpdateProject extends Component {
       id: "",
       projectName: "",
       projectIdentifier: "",
+      projectLeader: "",
       description: "",
       start_date: "",
       end_date: "",
@@ -28,6 +29,7 @@ class UpdateProject extends Component {
       id,
       projectName,
       projectIdentifier,
+      projectLeader,
       description,
       start_date,
       end_date
@@ -37,6 +39,7 @@ class UpdateProject extends Component {
       id,
       projectName,
       projectIdentifier,
+      projectLeader,
       description,
       start_date,
       end_date
@@ -59,6 +62,7 @@ class UpdateProject extends Component {
       id: this.state.id,
       projectName: this.state.projectName,
       projectIdentifier: this.state.projectIdentifier,
+      projectLeader: this.state.projectLeader,
       description: this.state.description,
       start_date: this.state.start_date,
       end_date: this.state.end_date
