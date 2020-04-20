@@ -66,3 +66,12 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+### `フロントのリリース方法`
+
+1. PPMTOOL/build を削除
+2. npm run build
+3. PPMTOOL/build が作成されていることを確認
+4. HerokuAppのsrc/main/resources/static配下にbuild内容をコピペ
+5. HerokuAppをgithubのmasterにプッシュ
+6. HerokuにHerokuAppを反映、デプロイする
