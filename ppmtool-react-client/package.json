@@ -24,8 +24,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://radiant-beyond-79409.herokuapp.com",
+  "proxy": "http://localhost:8080",
   "_comment": "ローカル開発するときはproxyを8080にする http://localhost:8080",
+  "__comment": "フロントだけならproxyを https://tasmane-100.herokuapp.com/",
   "eslintConfig": {
     "extends": "react-app"
   },
